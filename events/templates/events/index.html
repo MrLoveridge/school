@@ -1,10 +1,39 @@
 <h1>School events</h1>
+<h2>All events</h2>
 <table>
     <tr>
       <th>Date</th>
       <th>Title</th>
     </tr>
     {% for event in all_events %}
+        <tr>
+            <td>{{ event.date }}</td>
+            <td>{{ event.title }}</td>
+        </tr>
+    {% endfor %}
+
+</table> 
+<h2>DTG events</h2>
+<table>
+    <tr>
+      <th>Date</th>
+      <th>Title</th>
+    </tr>
+    {% for event in events_DTG %}
+        <tr>
+            <td>{{ event.date }}</td>
+            <td>{{ event.title }}</td>
+        </tr>
+    {% endfor %}
+
+</table> 
+<h2>Today's events</h2>
+<table>
+    <tr>
+      <th>Date</th>
+      <th>Title</th>
+    </tr>
+    {% for event in events_today %}
         <tr>
             <td>{{ event.date }}</td>
             <td>{{ event.title }}</td>
