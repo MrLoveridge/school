@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 from django.shortcuts import render, get_object_or_404
 from .models import Event
 
@@ -21,3 +21,11 @@ def detail(request, event_id):
     context = {'event': event}
 
     return render(request, 'events\detail.html', context)
+
+def search(request):
+
+    query_dict = request.GET
+
+    context = {}
+
+    return render(request, 'events/search.html', context)
