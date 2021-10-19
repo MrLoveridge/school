@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 from django.shortcuts import render, get_object_or_404
 from .models import Event
 
@@ -21,3 +21,18 @@ def detail(request, event_id):
     context = {'event': event}
 
     return render(request, 'events\detail.html', context)
+
+def search(request):
+
+    all_events = Event.objects.all().order_by('date')
+
+    if len(request.GET) == 0:
+        relevant_events = all_events
+    else:
+        search_string = request.GET['q']
+        relevant_events = all_events.filter(title__contains = search_string)
+
+    
+    context = {'relevant_events':relevant_events}
+
+    return render(request, 'events/search.html', context)
