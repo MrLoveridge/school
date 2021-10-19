@@ -36,30 +36,3 @@ def search(request):
     context = {'relevant_events':relevant_events}
 
     return render(request, 'events/search.html', context)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-""" print(request)
-
-query_dict = request.GET
-
-if len(query_dict) == 0:
-    relevant_events = all_events
-else:
-    search_string = query_dict['q']
-    relevant_events = all_events.filter(title__contains = search_string)
-
-print(relevant_events)
-
-context = {'relevant_events':relevant_events} """
