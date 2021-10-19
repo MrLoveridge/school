@@ -24,8 +24,42 @@ def detail(request, event_id):
 
 def search(request):
 
-    query_dict = request.GET
+    all_events = Event.objects.all().order_by('date')
 
-    context = {}
+    if len(request.GET) == 0:
+        relevant_events = all_events
+    else:
+        search_string = request.GET['q']
+        relevant_events = all_events.filter(title__contains = search_string)
+
+    
+    context = {'relevant_events':relevant_events}
 
     return render(request, 'events/search.html', context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+""" print(request)
+
+query_dict = request.GET
+
+if len(query_dict) == 0:
+    relevant_events = all_events
+else:
+    search_string = query_dict['q']
+    relevant_events = all_events.filter(title__contains = search_string)
+
+print(relevant_events)
+
+context = {'relevant_events':relevant_events} """
